@@ -1,0 +1,17 @@
+{% extends 'usuarios/base.html' %}
+
+{% block aba %}Excluir Filme{% endblock %}
+
+{% block titulo %}Filme{% endblock %}
+
+{% block conteudo %} 
+<div class="container bg-light p-4" style="border-radius: 15px;">
+    <h3>Exclusão do Filme Selecionado</h3>
+    <hr>
+    <p>Tem certeza que deseja excluir as informações do filme <strong>{{ lista_filmes.titulo }}</strong>?</p>
+    <div class="delete">
+        <a href="{% url 'excluir' lista_filmes.pk %}" class="btn btn-success btn-sm">Sim</a>
+        <a href="{% url 'alterar' %}" class="btn btn-danger btn-sm">Não</a>
+    </div>
+</div>
+{% endblock %}

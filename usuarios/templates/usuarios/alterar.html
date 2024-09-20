@@ -1,0 +1,36 @@
+{% extends 'usuarios/base.html' %}
+
+{% block aba %}Alterar Filme{% endblock %}
+
+{% block titulo %}Faça as alterações dos seus filmes da maneira que desejar!!{% endblock %}
+
+{% block conteudo %}
+    <div class="p-0 mb-5" style="border-radius: 15px; display: flex; flex-direction: column; align-items: center; position: relative;">
+        <div class="row bg-light p-5 shadow" style="width: 70%; border-radius: 10px;">
+                <h3>Alteração de filmes cadastrados</h3>
+                <hr>
+            {% for campo in lista_filmes %}
+                <div class="col-md-4 mt-2 mb-2">
+                    <img src="{{ campo.url_img }}" class="img-fluid" style="width: 220px; height: 340px;" alt="Poster">
+                </div>
+                <div class="col-md-8 mt-2 mb-2">
+                    <h2>{{ campo.titulo }}</h2>
+                    <p><strong>Data de lançamento:</strong> {{ campo.data_lancamento }}</p>
+                    <p><strong>Duração:</strong> {{ campo.duracao }}</p>
+                    <p><strong>Gênero:</strong> {{ campo.genero }}</p>
+                    <p><strong>Sinopse:</strong> {{ campo.sinopse }}</p>
+                    <p><strong>Disponibilidade:</strong> {{ campo.situacao }}</p>
+                    <div class="col-md-8" >
+                        <a href="{% url 'editar_verificacao' campo.pk %}" class="btn btn-primary btn-sm">Editar</a>
+                        <a href="{% url 'excluir_verificacao' campo.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                    </div>
+                </div>
+                <hr>
+                {% empty %}
+                <div class="container">
+                    <p colspan="6">Nenhum registro encontrado.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
