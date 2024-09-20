@@ -20,7 +20,7 @@ def login(request):
             login_django(request, user)
             return render(request, 'usuarios/home.html')
         else:
-            return render(request, 'usuarios/login.html', {'error_message': 'Você não acessou sua conta ainda!'})
+            return render(request, 'usuarios/login.html')
 
 def cadastro(request):
     if request.method == "GET":
